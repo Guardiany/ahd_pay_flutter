@@ -43,8 +43,19 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+    dependencies {
+        compileOnly files("libs/paytypelibrary2.0.5.aar")
+    }
 }
-
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        flatDir { dirs 'libs' }
+    }
+}
 flutter {
     source '../..'
 }
+
+
