@@ -16,7 +16,6 @@ class AhdPayFlutter {
   static Future<bool> alipay({
     required PaymentOptions options,
   }) async {
-    if (Platform.isIOS) {
       final result = await _channel.invokeMethod('alipay', {
         'mer_order_no': options.mer_order_no,
         'mer_key': options.mer_key,
@@ -40,9 +39,6 @@ class AhdPayFlutter {
       } else {
         return false;
       }
-    } else {
-      return true;
-    }
   }
 }
 
