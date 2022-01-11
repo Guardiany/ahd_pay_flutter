@@ -1,10 +1,14 @@
 package com.ahd.ahd_pay_flutter;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.pay.paytypelibrary.base.PayUtil;
 
@@ -127,13 +131,12 @@ public class AhdPayFlutterPlugin implements FlutterPlugin, MethodCallHandler {
     PayUtil.CashierPay(activity, orderJson.toString());
     Map<String, Object> resultMap = new HashMap<>();
     resultMap.put("result", "success");
-    resultMap.put("message", "跳转成功");
     _result.success(resultMap);
-    Log.e("122121@!#@!#@!","回来了");
   }
 
   @Override
   public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
     channel.setMethodCallHandler(null);
   }
+
 }
