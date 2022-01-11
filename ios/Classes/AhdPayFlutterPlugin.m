@@ -36,35 +36,49 @@
     }
     
     NSDictionary *dic = call.arguments;
-    NSString *orderIDStr = [dic valueForKey:@"orderId"];
-    NSString *keyStr = @"Xx52CDtWRH1etGu4IfFEB4OeRrnbr+EUd5VO7cBQFCqxfDl5FJcJaUjKJbHapVsyxSODBEbssNk=";
+    NSString *mer_order_no = [dic valueForKey:@"mer_order_no"];
+    NSString *mer_key = [dic valueForKey:@"mer_key"];
+    NSString *sign_type = [dic valueForKey:@"sign_type"];
+    NSString *order_amt = [dic valueForKey:@"order_amt"];
+    NSString *clear_cycle = [dic valueForKey:@"clear_cycle"];
+    NSString *return_url = [dic valueForKey:@"return_url"];
+    NSString *accsplit_flag = [dic valueForKey:@"accsplit_flag"];
+    NSString *product_code = [dic valueForKey:@"product_code"];
+    NSString *notify_url = [dic valueForKey:@"notify_url"];
+    NSString *create_time = [dic valueForKey:@"create_time"];
+    NSString *expire_time = [dic valueForKey:@"expire_time"];
+    NSString *goods_name = [dic valueForKey:@"goods_name"];
+    NSString *store_id = [dic valueForKey:@"store_id"];
+    NSString *create_ip = [dic valueForKey:@"create_ip"];
+    NSString *mer_no = [dic valueForKey:@"mer_no"];
+    NSString *version = [dic valueForKey:@"version"];
     
     XHPayParameterModel *model = [XHPayParameterModel new];
-    model.sign_type = @"MD5";
+    model.sign_type = sign_type;
     model.jump_scheme = @"sandcash://scpay";
-    model.order_amt = @"0.01";
-    model.clear_cycle = @"0";
-    model.return_url = @"";
-    model.accsplit_flag = @"NO";
+    model.order_amt = order_amt;
+    model.clear_cycle = clear_cycle;
+    model.return_url = return_url;
+    model.accsplit_flag = accsplit_flag;
     /// 只有支付宝
-    model.product_code = @"02020004";
-    model.notify_url = @"http://sandcash/notify";
+    model.product_code = product_code;
+    model.notify_url = notify_url;
     /// 不可为空
-    model.create_time = [self getOrderTimming];
-    model.expire_time = [self getExpireTimming];
-    model.mer_key = keyStr;
-    model.goods_name = @"支付宝测试商品1";
-    model.store_id = @"100001";
-    model.create_ip = @"172_12_12_12";
+    model.create_time = create_time;
+    model.expire_time = expire_time;
+    model.mer_key = mer_key;
+    model.goods_name = goods_name;
+    model.store_id = store_id;
+    model.create_ip = create_ip;
     // 单号
-    model.mer_order_no = orderIDStr;
-    model.mer_no = @"16938552";
-    model.version = @"1.0";
+    model.mer_order_no = mer_order_no;
+    model.mer_no = mer_no;
+    model.version = version;
     
     /// 签名时加了转义字符 传入时也要加转义字符
     model.pay_extraJson = @"{\"buyer_id\":\"\"}";
     ///  开始签名
-    model.sign = [self signWithModel:model withMD5KeyString:keyStr];
+    model.sign = [self signWithModel:model withMD5KeyString:mer_key];
     
     /// 单个的 调用支付宝
     /// 展示收银台
@@ -81,7 +95,7 @@
             NSLog(@"调取 支付tokenid=%@",tokenid);
         }
     };
-    NSDictionary *resultDic = [[NSDictionary alloc] initWithObjectsAndKeys:@"error", @"result", @"未安装支付宝APP", @"message", nil];
+    NSDictionary *resultDic = [[NSDictionary alloc] initWithObjectsAndKeys:@"success", @"result", @"", @"message", nil];
     result(resultDic);
 }
 
