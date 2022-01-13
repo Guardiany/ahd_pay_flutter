@@ -12,7 +12,7 @@
 #### 1、pubspec.yaml
 ```Dart
 ad_center_flutter:
-  git: http://47.108.255.102:8099/lzh/ahd_pay_flutter.git
+  git: https://github.com/Guardiany/ahd_pay_flutter.git
 ```
 
 #### 2、IOS
