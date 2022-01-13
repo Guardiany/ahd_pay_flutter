@@ -1,6 +1,5 @@
 
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/services.dart';
 
@@ -33,6 +32,7 @@ class AhdPayFlutter {
         'create_ip': options.create_ip,
         'mer_no': options.mer_no,
         'version': options.version,
+        'key': options.key,
       });
       if (result['result'] == 'success') {
         return true;
@@ -43,20 +43,22 @@ class AhdPayFlutter {
 }
 
 class PaymentOptions {
-  String mer_order_no = '';
-  String mer_key = '';
-  String sign_type = '';
-  String order_amt = '';
-  String clear_cycle = '';
-  String return_url = '';
-  String accsplit_flag = '';
-  String product_code = '';
-  String notify_url = '';
-  String create_time = '';
-  String expire_time = '';
-  String goods_name = '';
-  String store_id = '';
-  String create_ip = '';
-  String mer_no = '';
-  String version = '';
+  String? mer_order_no = '';
+  String? mer_key = '';
+  String? sign_type = '';
+  String? order_amt = '';
+  String? clear_cycle = '';
+  String? return_url = '';
+  String? accsplit_flag = '';
+  String? product_code = '';
+  String? notify_url = '';
+  String? create_time = '';
+  String? expire_time = '';
+  String? goods_name = '';
+  String? store_id = '';
+  String? create_ip = '';
+  String? mer_no = '';
+  String? version = '';
+  String? pay_extra = '';
+  String? key = '';
 }

@@ -52,6 +52,7 @@
     NSString *create_ip = [dic valueForKey:@"create_ip"];
     NSString *mer_no = [dic valueForKey:@"mer_no"];
     NSString *version = [dic valueForKey:@"version"];
+    NSString *key = [dic valueForKey:@"key"];
     
     XHPayParameterModel *model = [XHPayParameterModel new];
     model.sign_type = sign_type;
@@ -78,7 +79,7 @@
     /// 签名时加了转义字符 传入时也要加转义字符
     model.pay_extraJson = @"{\"buyer_id\":\"\"}";
     ///  开始签名
-    model.sign = [self signWithModel:model withMD5KeyString:mer_key];
+    model.sign = [self signWithModel:model withMD5KeyString:key];
     
     /// 单个的 调用支付宝
     /// 展示收银台
